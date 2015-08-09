@@ -1,0 +1,11 @@
+{
+    "name": "lwga/community-memory",
+    "description": "Social Network for support Alzheimer pacients with your memories.",
+    "authors": [
+        {
+            "name": "Anderson S Rocha",
+            "email": "andersonrocha@maxfs.com"
+        }
+    ],
+    "require": {}
+}
