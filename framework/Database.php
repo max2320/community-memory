@@ -6,8 +6,9 @@ class Database {
 
 	public function __construct(){
 		global $DB_DSN, $DB_USER, $DB_PASS;
-
-		$this->cnx = new PDO($DB_DSN, $DB_USER,	$DB_PASS);
+		var_dump($DB_DSN);
+		$this->cnx = new PDO($GLOBALS['DB_DSN'], $GLOBALS['DB_USER'],	$GLOBALS['DB_PASS']);
+		$this->cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 
 	public function querySql($sql){
@@ -15,7 +16,7 @@ class Database {
 	}
 
 	public function executeSql($sql){
-		return $this->cnx->exec($sql);
+		return $this->cnx->query($sql);
 	}
 
 	public function insert($table, $fields, $datas){
