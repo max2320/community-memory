@@ -3,9 +3,10 @@
 		<?= Render::view('layouts/head'); ?>
 	</head>
 	<body>
-		<?= Render::view('layouts/header'); ?>
-		<h1>programa</h1>
-		<?= $content; ?>
-		<?= Render::view('layouts/footer'); ?>
+		<div class="content-center">
+			<?= Render::view('layouts/header'); ?>
+				<?= $content; ?>
+			<?= Render::view('layouts/footer'); ?>
+		</div>
 	</body>
 </html>

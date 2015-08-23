@@ -9,7 +9,7 @@ include '../framework/init.php';
 
 
 // new Install(['Usuario']);
-$user = new Usuario();
-$user->create(['Larissa','lary','12345',1]);
+//$user = new Usuario();
+//$user->create(['Larissa','lary','12345',1]);
 
 ?>
