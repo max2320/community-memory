@@ -10,4 +10,5 @@ $DB_PASS = "max2320hk";
 // new Install(['Usuario']);
 $user = new Usuario();
 $user->create(['Larissa','lary','12345',1]);
+
 ?>

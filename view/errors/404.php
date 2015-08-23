@@ -1,0 +1,2 @@
+pagina não encontrada
+<?= $message?>
