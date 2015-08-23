@@ -36,7 +36,7 @@ class Database {
 	}
 
 	public function select($table, $fields, $where){
-		return $this->querySql("SELECT FROM {$table} $where id = {$id}");
+		return $this->querySql("SELECT {$fields} FROM {$table} {$where}");
 	}
 
 }

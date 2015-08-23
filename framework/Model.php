@@ -27,6 +27,9 @@ class Model{
     return $this->db->delete($this->table, $id);
   }
 
+  public function select($fields, $where){
+    return $this->db->select($this->table, $fields, $where)
+  }
 }
 
 ?>
