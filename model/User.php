@@ -6,19 +6,19 @@ class User{
   public function __construct(){
     $this->model = new Model($this->tableName(), $this->fields());
   }
-  private function tableName(){
-    return 'usuarios';
+  public function tableName(){
+    return 'user';
   }
   private function fields(){
-    return ['nome', 'usuario', 'senha', 'status'];
+    return ['name', 'user', 'password', 'status'];
   }
 
   public static function createTable(){
-    return "CREATE TABLE usuarios(
+    return "CREATE TABLE user(
       id INTEGER NOT NULL AUTO_INCREMENT,
-      nome VARCHAR(255) NOT NULL,
-      usuario VARCHAR(255) NOT NULL,
-      senha VARCHAR(255) NOT NULL,
+      name VARCHAR(255) NOT NULL,
+      user VARCHAR(255) NOT NULL,
+      password VARCHAR(255) NOT NULL,
       status INTEGER NOT NULL,
       PRIMARY KEY(id)
     );";

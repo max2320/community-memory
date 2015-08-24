@@ -6,7 +6,7 @@ class Post{
   public function __construct(){
     $this->model = new Model($this->tableName(), $this->fields());
   }
-  private function tableName(){
+  public function tableName(){
     return 'post';
   }
   private function fields(){

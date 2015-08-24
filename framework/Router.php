@@ -8,16 +8,19 @@ class Router{
 	private $action;
 
 	public function __construct($session, $urlParser){
+		global $ROUTE_ROOT;
 		$this->session = $session; 
 		$this->controller = ucfirst(strtolower($urlParser->getController()))."Controller"; 
 		$this->action = $urlParser->getAction();
+		if(empty($urlParser->getController())){
+			Redirect::to($ROUTE_ROOT);
+		}
 	} 
 
 	public function run(){
 		$error = false;
 		$action = $this->action;
 		if(class_exists($this->controller)){
-
 			$controlObject = new $this->controller;
 			if(method_exists($controlObject, $action)){
 				$controlObject->$action($_GET);

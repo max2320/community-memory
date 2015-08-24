@@ -5,13 +5,9 @@ class Database {
 	private $cnx;
 
 	public function __construct(){
-		global $DB_DSN, $DB_USER, $DB_PASS;
+		global $DB_DSN, $DB_USER, $DB_PASSWORD;
 
-		$DB_DSN = "mysql:dbname=papaburger;host=localhost;port=3306";
-		$DB_USER = "root";
-		$DB_PASS = "";
-
-		$this->cnx = new PDO($DB_DSN, $DB_USER,	$DB_PASS);
+		$this->cnx = new PDO($DB_DSN, $DB_USER,	$DB_PASSWORD);
 		$this->cnx->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 
