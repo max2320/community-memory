@@ -33,7 +33,24 @@
     right: 360px;
     top: 230px;
 	}
+	
 	label{
 		display: block;
 	}
+	
+	.header {
+    background-color: #9EACFC;
+    width: : 100%;
+    height: 80px;
+	}
+	
+	.footer {
+	  position: absolute;
+	  bottom: 0;
+	  width: 100%;
+	  height: 80px;
+	  background-color: #9EACFC;
+	}
+
+
 </style>
