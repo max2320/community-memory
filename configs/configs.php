@@ -10,6 +10,9 @@ return [
 		'route_root' => 'auth/login',
 		'allow_framework' => true,
 	# END ROUTES	
+	# UPLOADS PATH
+		'UPLOADS_PATH' => ""
+	# END UPLOADS PATH
 ];
 
 ?>

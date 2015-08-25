@@ -1,7 +1,7 @@
 <?php
-$frameworkPath = dirname(__FILE__);
-$appPath = $frameworkPath . "/../";
-$configFile = $appPath . "/configs/configs.php";
+$GLOBALS['frameworkPath'] = dirname(__FILE__);
+$GLOBALS['appPath'] = $frameworkPath . "/../";
+$GLOBALS['configFile'] = $appPath . "/configs/configs.php";
 require $frameworkPath . '/autoloader.php';
 
 session_start();

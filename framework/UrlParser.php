@@ -12,6 +12,9 @@ class UrlParser{
 		$this->parse();
 	}
 
+	public function method(){
+		return strtolower($_SERVER['REQUEST_METHOD']);
+	}
 	public function parse(){
 		$uri = explode("/", $this->uri);
 		if(isset($uri[1])){
