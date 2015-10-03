@@ -16,11 +16,12 @@ class Model{
   }
 
   public function newRegister($datas){
-    return $this->db->insert($this->table, $this->fields, $datas);
+
+    return $this->db->insert($this->table, array_keys($datas), $datas);
   }
 
   public function updateRegister($id,$datas){
-    return $this->db->update($this->table, $this->fields, $datas, "id = {$id}");
+    return $this->db->update($this->table, array_keys($datas), $datas, "id = {$id}");
   }
 
   public function deleteRegister($id){

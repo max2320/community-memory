@@ -21,3 +21,6 @@
 		<a href="/auth/recovery_password">Esqueci minha senha</a>
 	</div>
 </form>
+<a class="btn btn-success" href="/auth/register">
+	Resgistrar-se
+</a>

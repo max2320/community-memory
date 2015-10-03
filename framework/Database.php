@@ -20,6 +20,7 @@ class Database {
 	}
 
 	public function insert($table, $fields, $datas){
+		echo "INSERT INTO {$table}(". implode(',',$fields).") VALUES ('". implode("','",$datas)."');";
 		return $this->executeSql("INSERT INTO {$table}(". implode(',',$fields).") VALUES ('". implode("','",$datas)."');");
 	}
 

@@ -22,6 +22,6 @@ foreach ($list->fetchAll(PDO::FETCH_ASSOC) as $row) {
 		</div>
 	</div>
 	<hr>
-<?php
+  <?php
 }
 ?>
