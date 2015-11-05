@@ -1,1 +1,1 @@
-web: heroku-php-apache2 -S 0.0.0.0:$port -t /public
+web: vendor/bin/heroku-php-apache2 web/ -S $addr:$port -t /public
