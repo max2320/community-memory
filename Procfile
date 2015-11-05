@@ -1,1 +1,1 @@
-web: php -S 0.0.0.0:$port -t /public
+web: heroku-php-apache2 -S 0.0.0.0:$port -t /public
