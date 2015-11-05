@@ -1,0 +1,13 @@
+{
+  "name": "community-memory",
+  "description": "",
+  "scripts": {},
+  "env": {
+    "DOMAIN_NAME": {
+      "required": true
+    },
+  },
+  "addons": [
+    "cleardb"
+  ]
+}

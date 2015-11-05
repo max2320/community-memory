@@ -1,20 +1,28 @@
 <?php
-class User{
+class User extends Model{
 
-  private $model;
-
-  public function __construct(){
-    $this->model = new Model($this->tableName(), $this->fields());
-  }
-  
   public function tableName(){
     return 'user';
-  }
+  } 
+  
+  public function columns(){ 
+    return [
+      'name',
+      'birth_date', 
+      'email', 
+      'password', 
+      'status'
+    ];
+  } 
 
-  private function fields(){
-    return ['name', 'birth_date', 'user', 'password', 'status'];
+  public function validators(){ 
+    return [
+      'birth_date'=>'date', 
+      'user'=>'email', 
+      'status'=>'integer'
+    ];
   }
-
+  
   public static function createTable(){
     return "CREATE TABLE user(
       id INTEGER NOT NULL AUTO_INCREMENT,
@@ -25,10 +33,6 @@ class User{
       status INTEGER NOT NULL,
       PRIMARY KEY(id)
     );";
-  }
-
-  public function create($data){
-    $this->model->newRegister($data);
   }
 }
 

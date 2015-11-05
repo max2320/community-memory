@@ -1,35 +1,86 @@
 <?php
 
-
 class Model{
 
-  private $db;
-  private $table;
-  private $fields = [];
+  private $_db;
 
-  public function __construct($table, $fields){
-
-    $this->db = new Database();
-    $this->table = $table;
-    $this->fields = $fields;
-
+  
+  private function startDB(){
+    $this->_db = new Database();
   }
 
-  public function newRegister($datas){
 
-    return $this->db->insert($this->table, array_keys($datas), $datas);
+  private function prepareWhere($array){
+    $where = [];
+    
+    foreach($array as $column => $value){
+      if(!is_numeric($value)){
+        $value = "'{$value}'";
+      }
+
+      array_push($where, "{$column} = {$value}");
+    }
+    return implode(' AND ', $where);
   }
 
-  public function updateRegister($id,$datas){
-    return $this->db->update($this->table, array_keys($datas), $datas, "id = {$id}");
+  public function find($id){
+    self::findByAttr([
+      'id' => $id
+    ]);
   }
 
-  public function deleteRegister($id){
-    return $this->db->delete($this->table, $id);
+  public function findByAttr($attr){
+    $this->isNew = false;
+    $query = $this->_db->select($this->tableName(), $this->prepareWhere($attr));
+    $data = [];
+    foreach($query as $k => $row){
+      $this->dataToModel($row);
+    }
   }
 
-  public function select($fields, $where){
-    return $this->db->select($this->table, $fields, $where);
+  public function save(){
+    if($this->isNew){
+      $this->newRegister($this->modelToData());
+    }else{
+      $this->updateRegister($this->id, $this->modelToData());
+    }
+  }
+
+  public function delete(){
+    $this->deleteRegister($this->id);
+  }
+
+  private function modelToData(){
+    $datas = [];
+    foreach($this->columns() as $column){
+      $datas[$column] = $this->$column;
+    }
+    return $datas;
+  }
+  private function dataToModel($data){
+    foreach($this->columns() as $column){
+      $this->$column = $data[$column];
+    }
+  }
+
+  private function newRegister($datas){
+    return $this->DB()->insert($this->table, array_keys($datas), $datas);
+  }
+
+  private function updateRegister($id,$datas){
+    return $this->DB()->update($this->table, array_keys($datas), $datas, "id = {$id}");
+  }
+
+  private function deleteRegister($id){
+    return $this->DB()->delete($this->table, $id);
+  }
+
+  public function __construct($data = []){
+    $this->isNew = true;
+
+    $this->dataToModel($data);
+    
+    $this->startDB();
   }
 }
 

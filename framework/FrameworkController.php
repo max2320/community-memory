@@ -22,7 +22,7 @@ class FrameworkController{
 			if(strpos($modelClass, '.php')){	
 				$class = str_replace('.php', '', $modelClass);
 				array_push($models, $class);
-			  echo "CREATED::" . $class . "<br>";
+			  echo "FOUND::" . $class . "<br>";
 			}
 		}
 		$modelsDir->close();

@@ -11,21 +11,25 @@ class AuthController{
 	}	
 
 	public function register(){
+
+		$user  = new User;
+
+		
+
 		echo Render::viewWithLayout();
 	}
 
 	public function postRegister($get, $post){
-		print_r($post);
 
-		$newUser = new User();
-		$newUser->create([
-			'name' => $post['name'],
-			'birth_date'=> Date::formatToStore($post['birth_date']),
-			'user'=> $post['email']
-		]);
+		$post['user']['birth_date'] = Date::formatToStore($post['user']['birth_date']);
+		var_dump($post['user']);
+		
+		$newUser = new User($post['user']);
+		
+		print_r($newUser);
+		// echo Render::viewWithLayout('/auth/register');
 
-
-		Redirect::to('auth/registerStep1');
+		// Redirect::to('auth/registerStep1');
 
 	}
 	public function registerStep1(){
