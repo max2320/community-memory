@@ -9,6 +9,12 @@ class Model{
     $this->_db = new Database();
   }
 
+  public function attr($name){
+    if(isset($this->$name)){
+      return $this->$name;
+    }
+    return '';
+  }
 
   private function prepareWhere($array){
     $where = [];
@@ -40,9 +46,9 @@ class Model{
 
   public function save(){
     if($this->isNew){
-      $this->newRegister($this->modelToData());
+      return $this->newRegister($this->modelToData());
     }else{
-      $this->updateRegister($this->id, $this->modelToData());
+      return $this->updateRegister($this->id, $this->modelToData());
     }
   }
 
@@ -57,6 +63,7 @@ class Model{
     }
     return $datas;
   }
+
   private function dataToModel($data){
     foreach($this->columns() as $column){
       $this->$column = $data[$column];
@@ -64,22 +71,29 @@ class Model{
   }
 
   private function newRegister($datas){
-    return $this->DB()->insert($this->table, array_keys($datas), $datas);
+    var_dump($this->tableName(), array_keys($datas), $datas);
+    return $this->_db->insert($this->tableName(), array_keys($datas), $datas);
   }
 
   private function updateRegister($id,$datas){
-    return $this->DB()->update($this->table, array_keys($datas), $datas, "id = {$id}");
+    return $this->_db->update($this->tableName(), array_keys($datas), $datas, "id = {$id}");
   }
 
   private function deleteRegister($id){
-    return $this->DB()->delete($this->table, $id);
+    return $this->_db->delete($this->tableName(), $id);
+  }
+
+  private function setupAttributes(){
+    foreach($this->columns() as $column){
+      $this->$column = $column;
+    }
   }
 
   public function __construct($data = []){
     $this->isNew = true;
+    $this->setupAttributes();    
 
     $this->dataToModel($data);
-    
     $this->startDB();
   }
 }

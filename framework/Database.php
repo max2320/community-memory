@@ -25,16 +25,19 @@ class Database {
 
 
 	public function insert($table, $fields, $datas){
-		$this->prepare("INSERT INTO {$table}(". implode(',',$fields).") VALUES ('". implode("','",$datas)."');");
+		echo "INSERT INTO {$table} (". implode(',',$fields).") VALUES ('". implode("','",$datas)."');";
+		$this->prepare("INSERT INTO {$table} (". implode(',',$fields).") VALUES ('". implode("','",$datas)."');");
 
 		return $this->run();
 	}
 
 	public function update($table, $fields, $datas, $where){
 		$updateQuery = [];
+
 		foreach($fields as $id => $field){
 			array_push($updateQuery, "{$field} = '{$datas[$id]}'");
 		}
+
 		$updateQuery = implode(',',$updateQuery);
 		
 		$this->prepare("UPDATE {$table} SET {$updateQuery} WHERE $where");

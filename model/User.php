@@ -18,7 +18,7 @@ class User extends Model{
   public function validators(){ 
     return [
       'birth_date'=>'date', 
-      'user'=>'email', 
+      'email'=>'email', 
       'status'=>'integer'
     ];
   }
@@ -27,8 +27,8 @@ class User extends Model{
     return "CREATE TABLE user(
       id INTEGER NOT NULL AUTO_INCREMENT,
       name VARCHAR(255) NOT NULL,
-      birth_date DATETIME NOT NULL,
-      user VARCHAR(255) NOT NULL,
+      birth_date DATE NOT NULL,
+      email VARCHAR(255) NOT NULL,
       password VARCHAR(255) NOT NULL,
       status INTEGER NOT NULL,
       PRIMARY KEY(id)
