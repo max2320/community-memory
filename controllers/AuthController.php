@@ -82,11 +82,12 @@ class AuthController{
 			Redirect::to('auth/wrongToken');
 		}
 
-		if(isset($post['user']) && isset($post['profile'])){
+		if(isset($post['user']) && isset($files['profile'])){
 			if($post['user']['password'] == $post['user']['confirm_password'] ){
+
 				if(isset($files['profile']['photo'])){
 					$file = new UploadFile($files['profile']['photo']);
-					if($file->save()){
+					if($file->save('/profiles/photos')){
 						$profile = new Profile([
 							'name' => $user->name,
 							'photo' => '',

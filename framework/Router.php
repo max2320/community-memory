@@ -22,6 +22,7 @@ class Router{
 
 	private function formatFiles(){
 		$files = [];
+
 		if(!empty($_FILES)){
 			foreach($_FILES as $key => $attrs){
 				$files_key = [];
@@ -36,10 +37,10 @@ class Router{
 					];
 				}
 
-				echo $key;
 				$files[$key] = $files_key;
 			}
 		}	
+
 		return $files;
 	}
 
