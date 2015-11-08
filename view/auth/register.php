@@ -1,4 +1,3 @@
-<?php var_dump($user); ?>
 <form action="/auth/register" method="post">
   <div class="form-group">
     <label>Nome</label>

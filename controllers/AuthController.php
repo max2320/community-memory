@@ -1,6 +1,7 @@
 <?php
 class AuthController{
 	public function login(){
+		
 		echo Render::viewWithLayout();
 	}
 
@@ -24,19 +25,17 @@ class AuthController{
 		$post['user']['birth_date'] = Date::formatToStore($post['user']['birth_date'], false);
 		$post['user']['password'] = $passwordTokenEnc;
 		$post['user']['status'] = 0;
-		$post['user']['token'] = $passwordToken;
 		
 		//build user
 		$newUser = new User($post['user']);
+		$newUser->token = $passwordToken;
 		
 		if($newUser->save()){
 			// build registration mail
 			$mailer = new Mailer('user_register', $newUser, $newUser->email, 'Resgistro de Usuário');
 			// send mail
 			if($mailer->deliver()){
-				echo Render::viewWithLayout('/auth/registerMailDelivered',[
-					'user' => $newUser,
-				]);
+				Redirect::to('auth/registerMailDelivered');
 			}
 		}
 
@@ -44,9 +43,69 @@ class AuthController{
 			'user' => $user
 		]);
 	}
-	public function registerFinishRegister(){
 
-		echo Render::viewWithLayout();
+	public function registerMailDelivered(){
+		echo Render::viewWithLayout('auth/register_mail_delivered');
+	}
+
+	public function finishRegister($get, $post){
+		$token = $get['token'];
+
+		$user = new User();
+		$user->findByAttr([
+			'password' => sha1($token),
+		]);
+
+		if(empty($user->name)){
+			Redirect::to('auth/wrongToken');
+		}
+
+		echo Render::viewWithLayout('auth/finish_register',[
+			'token'=> $token,
+			'user'=> $user,
+		]);
+	}
+	public function wrongToken(){
+		echo Render::viewWithLayout('auth/wrong_token');
+	}
+	
+	public function postFinishRegister($get, $post){
+		$error = '';
+		var_dump($post,$get);
+
+		$token = $post['user']['token'];
+		$user = new User();
+		$user->findByAttr([
+			'password' => sha1($token),
+		]);
+		
+
+		if(empty($user->name)){
+			Redirect::to('auth/wrongToken');
+		}
+
+		if(isset($post['user']) && isset($post['profile'])){
+			if($post['user']['password'] == $post['user']['confirm_password'] ){
+				if(isset($post['profile']['photo'])){
+					$profile = new Profile([]);
+					
+					$user->password = sha1($post['user']['password']);
+					$user->status = 1;
+
+					// if($user->save()){
+					// 	Redirect::to('auth/finished');
+					// }
+				}
+			}else{
+				$error = 'Senhas não conferem';
+			}
+		}
+
+		echo Render::viewWithLayout('auth/finish_register',[
+			'error'=>$error,
+			'token'=> $token,
+			'user'=> $user,
+		]);
 	}
 
 	public function logout(){

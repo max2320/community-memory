@@ -14,7 +14,7 @@ class Post{
   }
 
   public static function createTable(){
-    return "CREATE TABLE post(
+    return "CREATE TABLE IF NOT EXISTS post(
       id INTEGER NOT NULL AUTO_INCREMENT,
       content TEXT NOT NULL,
       image VARCHAR(255) NOT NULL,

@@ -10,6 +10,9 @@ return [
 		'route_root' => 'auth/login',
 		'allow_framework' => true,
 	# END ROUTES	
+	# DOMAIN
+		'domain_name' => 'http://localhost:3000',
+	# END DOMAIN
 	# SMTP SETTINGS
 		'smtp_host' => 'smtp.domain.com',
 		'smtp_username' => 'teste@maxfs.com',

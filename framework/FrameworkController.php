@@ -16,15 +16,18 @@ class FrameworkController{
 	}
 	
 	private function getModels(){
+		global $appPath;
 		$models = [];
-		$modelsDir = dir(dirname(__FILE__) . "/../model/");
+		$modelsDir = dir($appPath . "model/");
+		echo "FOUND::";
 		while (false !== ($modelClass = $modelsDir->read())) {
 			if(strpos($modelClass, '.php')){	
 				$class = str_replace('.php', '', $modelClass);
 				array_push($models, $class);
-			  echo "FOUND::" . $class . "<br>";
+				echo  " |" . $class . "| ";
 			}
 		}
+		echo "<br>";
 		$modelsDir->close();
 		return $models;
 	}

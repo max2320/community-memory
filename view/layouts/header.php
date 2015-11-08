@@ -4,10 +4,11 @@
 			<div class="logo">
 				<img src=""/>
 			</div>	
-
-			<div class="opcoes">
-				<a href="#" class="btn btn-primary" role="button">Opcoes</a>
-			</div>	
+			<?php if(false){ ?>
+				<div class="opcoes">
+					<a href="#" class="btn btn-primary" role="button">Opcoes</a>
+				</div>	
+			<?php } ?>
 		</div>
 	</div>
 </header>	
