@@ -6,7 +6,10 @@ class Install{
   public function __construct($classCatalog){
     $this->db = new Database();
     foreach($classCatalog as $class){
-      $this->db->executeSql($class::createTable());
+
+      echo "CREATING::{$class}<br><pre>" . $class;
+      var_dump($this->db->query($class::createTable()));
+      echo "</pre><br>";
     }
   }
 }

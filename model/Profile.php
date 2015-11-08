@@ -1,19 +1,17 @@
 <?php
-class User extends Model{
+class Profile extends Model{
 
   public $token;
   
   public function tableName(){
-    return 'user';
+    return 'profile';
   } 
   
   public function columns(){ 
     return [
       'name',
-      'birth_date', 
-      'email', 
-      'password', 
-      'status'
+      'photo', 
+      'user_id', 
     ];
   } 
 
@@ -26,13 +24,11 @@ class User extends Model{
   }
   
   public static function createTable(){
-    return "CREATE TABLE IF NOT EXISTS user(
+    return "CREATE TABLE IF NOT EXISTS profile(
       id INTEGER NOT NULL AUTO_INCREMENT,
+      user_id INTEGER NOT NULL REFERENCES user(id),
       name VARCHAR(255) NOT NULL,
-      birth_date DATE NOT NULL,
-      email VARCHAR(255) NOT NULL,
-      password VARCHAR(255) NOT NULL,
-      status INTEGER NOT NULL,
+      photo TEXT NOT NULL,
       PRIMARY KEY(id)
     );";
   }

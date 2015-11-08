@@ -1,1 +1,1 @@
-web: php -S 0.0.0.0:$port /public
+web: vendor/bin/heroku-php-apache2  public/
