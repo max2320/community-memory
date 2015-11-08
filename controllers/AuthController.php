@@ -1,7 +1,6 @@
 <?php
 class AuthController{
-	public function login(){
-		
+	public function login(){	
 		echo Render::viewWithLayout();
 	}
 
@@ -69,9 +68,8 @@ class AuthController{
 		echo Render::viewWithLayout('auth/wrong_token');
 	}
 	
-	public function postFinishRegister($get, $post){
+	public function postFinishRegister($get, $post, $files){
 		$error = '';
-		var_dump($post,$get);
 
 		$token = $post['user']['token'];
 		$user = new User();
@@ -86,15 +84,22 @@ class AuthController{
 
 		if(isset($post['user']) && isset($post['profile'])){
 			if($post['user']['password'] == $post['user']['confirm_password'] ){
-				if(isset($post['profile']['photo'])){
-					$profile = new Profile([]);
-					
-					$user->password = sha1($post['user']['password']);
-					$user->status = 1;
+				if(isset($files['profile']['photo'])){
+					$file = new UploadFile($files['profile']['photo']);
+					if($file->save()){
+						$profile = new Profile([
+							'name' => $user->name,
+							'photo' => '',
+							'user_id' => $user->id,
+						]);
+						
+						$user->password = sha1($post['user']['password']);
+						$user->status = 1;
 
-					// if($user->save()){
-					// 	Redirect::to('auth/finished');
-					// }
+						// if($user->save()){
+						// 	Redirect::to('auth/finished');
+						// }
+					}
 				}
 			}else{
 				$error = 'Senhas não conferem';

@@ -20,17 +20,43 @@ class Router{
 		}
 	} 
 
+	private function formatFiles(){
+		$files = [];
+		if(!empty($_FILES)){
+			foreach($_FILES as $key => $attrs){
+				$files_key = [];
+				
+				foreach($attrs['name'] as $field => $data){
+					$files_key[$field] = [
+						'name' => $attrs['name'][$field],
+            'type' => $attrs['type'][$field],
+            'tmp_name' => $attrs['tmp_name'][$field],
+            'error' => $attrs['error'][$field],
+            'size' => $attrs['size'][$field],
+					];
+				}
+
+				echo $key;
+				$files[$key] = $files_key;
+			}
+		}	
+		return $files;
+	}
+
 	public function run(){
 		$error = false;
 		$action = $this->method.ucfirst($this->action);
+
 		if(class_exists($this->controller)){
 			$controlObject = new $this->controller;
+
 			if(method_exists($controlObject, $action)){
-				$controlObject->$action($_GET, $_POST);
+				$controlObject->$action($_GET, $_POST, $this->formatFiles());
 			}else{
 				$action = $this->action;
+				
 				if(method_exists($controlObject, $action)){
-					$controlObject->$action($_GET, $_POST);
+					$controlObject->$action($_GET, $_POST, $this->formatFiles());
 				}else{
 					$error = true;
 				}
@@ -38,6 +64,7 @@ class Router{
 		}else{
 			$error = true;
 		}
+
 		if($error){
 			echo Render::view('errors/404.php');
 		}

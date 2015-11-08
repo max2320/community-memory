@@ -5,11 +5,11 @@ class UploadFile{
 	
 	public function __construct($file){
 		$this->file = $file;
-		$this->fileName = $file['name'];
+		$this->fileName = date('U') . "_" . $file['name'];
 	}
 
 	public function save($path = "/"){
-		return move_uploaded_file ( $this->getFileName() , $this->uploadPath() . $path);
+		return move_uploaded_file($this->getFileName() , $this->uploadPath() . $path);
 	}
 	private function uploadPath(){
 		global $UPLOADS_PATH, $appPath;
