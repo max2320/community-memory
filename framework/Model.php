@@ -4,7 +4,8 @@ class Model{
 
   private $_db;
 
-  
+  private $exist;
+
   private function startDB(){
     $this->_db = new Database();
   }
@@ -14,6 +15,10 @@ class Model{
       return $this->$name;
     }
     return '';
+  }
+
+  public function exists(){
+    return $this->exist;
   }
 
   private function prepareWhere($array){
@@ -26,6 +31,7 @@ class Model{
 
       array_push($where, "{$column} = {$value}");
     }
+    
     return implode(' AND ', $where);
   }
 
@@ -39,8 +45,15 @@ class Model{
     $this->isNew = false;
     $query = $this->_db->select($this->tableName(), $this->prepareWhere($attr));
     $data = [];
+
     foreach($query as $k => $row){
       $this->dataToModel($row);
+      $this->_id = $row['id'];
+    }
+
+    $this->exist = true;
+    if(empty($this->_id)){
+      $this->exist = false;
     }
   }
 
@@ -75,7 +88,7 @@ class Model{
   }
 
   private function updateRegister($id,$datas){
-    return $this->_db->update($this->tableName(), array_keys($datas), $datas, "id = {$id}");
+    return $this->_db->update($this->tableName(), array_keys($datas), $datas, "id = {$this->_id}");
   }
 
   private function deleteRegister($id){

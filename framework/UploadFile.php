@@ -5,11 +5,10 @@ class UploadFile{
 	
 	public function __construct($file){
 		$this->file = $file;
-		print_r($this->file);
+		$this->hash = md5(date('U'));
 	}
 
 	public function save($path = "/"){
-		var_dump($this->getFileName() , $this->uploadPath() . $path);
 		return move_uploaded_file($this->getTempName() , 
 			$this->uploadPath() . $path . "/". $this->getFileName());
 	}
@@ -20,7 +19,7 @@ class UploadFile{
 	}
 	
 	public function getFileName(){
-		return date('U') . "_" . $this->file['name'];		
+		return $this->hash . "_" . $this->file['name'];		
 	}
 	
 	public function getTempName(){

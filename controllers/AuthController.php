@@ -1,12 +1,38 @@
 <?php
 class AuthController{
-	public function login(){	
+	public function login(){
+
 		echo Render::viewWithLayout();
 	}
 
 	public function postLogin($get, $post){
 		print_r($get);
 		print_r($post);
+		$error = '';
+
+		if(isset($post['user'])){
+			$user = new User;
+			$user->findByAttr([
+				'email' => $post['user']['email']
+			]);
+			
+			if($user->exists()){
+				if($user->password == sha1($post['user']['password'])){
+					$_SESSION['auth'] = 'ON';
+					$_SESSION['session_user'] = $user->name;
+					$_SESSION['session_user_id'] = $user->_id;
+					Redirect::to('post/list');					
+				}else{
+					$error = 'Usuário e/ou senha não existentes';	
+				}
+			}else{
+				$error = 'Usuário e/ou senha não existentes';
+			}
+		}
+
+		echo Render::viewWithLayout('/auth/login',[
+			'error'=>$error;
+		]);
 	}	
 
 	public function register(){
@@ -90,16 +116,16 @@ class AuthController{
 					if($file->save('/profiles/photos')){
 						$profile = new Profile([
 							'name' => $user->name,
-							'photo' => '',
+							'photo' => $file->getFileName(),
 							'user_id' => $user->id,
 						]);
 						
 						$user->password = sha1($post['user']['password']);
 						$user->status = 1;
 
-						// if($user->save()){
-						// 	Redirect::to('auth/finished');
-						// }
+						if($user->save() && $profile->save()){
+							Redirect::to('auth/finished');
+						}
 					}
 				}
 			}else{
@@ -112,6 +138,10 @@ class AuthController{
 			'token'=> $token,
 			'user'=> $user,
 		]);
+	}
+
+	public function finished(){
+		echo Render::viewWithLayout();
 	}
 
 	public function logout(){

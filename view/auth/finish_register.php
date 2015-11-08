@@ -1,7 +1,7 @@
 <div>
   <p>Ola <strong><?php echo $user->name; ?></strong></p>
   <p> Para finalizar seu cadastro precisamos deu defina sua senha e coloque sua foto de perfil</p>
-  <?php if(isset($error)){ ?>
+  <?php if(!empty($error)){ ?>
     <div class="alert alert-warning">
       <?php echo $error; ?>
     </div>

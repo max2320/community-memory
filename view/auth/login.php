@@ -1,14 +1,14 @@
 <form method="post">
 	<div>
 		<label>Usuario:</label>
-		<input type="text" name="user" class="form-control">
+		<input type="text" name="user[email]" class="form-control" required='true'>
 	</div>
 	
 	<br clear="both"/>
 	
 	<div>
 		<label>Senha:</label>
-		<input type="password" name="password" class="form-control">
+		<input type="password" name="user[password]" class="form-control" required='true'>
 	</div>
 	
 	<br clear="both"/>

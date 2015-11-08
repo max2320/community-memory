@@ -29,14 +29,15 @@ class Database {
 	}
 
 	public function update($table, $fields, $datas, $where){
+		var_dump($fields);
 		$updateQuery = [];
 
-		foreach($fields as $id => $field){
-			array_push($updateQuery, "{$field} = '{$datas[$id]}'");
+		foreach($datas as $field => $value){
+			array_push($updateQuery, "{$field} = '{$value}'");
 		}
 
 		$updateQuery = implode(',',$updateQuery);
-		
+
 		return $this->run("UPDATE {$table} SET {$updateQuery} WHERE $where");
 	}
 
