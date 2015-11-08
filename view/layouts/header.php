@@ -4,9 +4,9 @@
 			<div class="logo">
 				<img src=""/>
 			</div>	
-			<?php if(false){ ?>
+			<?php if(isset($_SESSION['auth']) && $_SESSION['auth'] == "ON" ){ ?>
 				<div class="opcoes">
-					<a href="#" class="btn btn-primary" role="button">Opcoes</a>
+					<a href="/auth/logout">Sair</a>
 				</div>	
 			<?php } ?>
 		</div>

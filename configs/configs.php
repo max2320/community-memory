@@ -23,7 +23,7 @@ return [
 		'smtp_from_email' => 'no-reply@maxfs.com',
 	# END SMTP SETTINGS
 	# UPLOADS PATH
-		'UPLOADS_PATH' => "uploads"
+		'UPLOADS_PATH' => "public/uploads"
 	# END UPLOADS PATH
 ];
 

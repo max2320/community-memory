@@ -1,13 +1,18 @@
 <?php
 class AuthController{
+	private function authenticate(){
+		return $_SESSION['auth'] == 'ON';
+	}
+
 	public function login(){
+		if($this->authenticate()){
+			Redirect::to('post/index');
+		}
 
 		echo Render::viewWithLayout();
 	}
 
 	public function postLogin($get, $post){
-		print_r($get);
-		print_r($post);
 		$error = '';
 
 		if(isset($post['user'])){
@@ -21,7 +26,7 @@ class AuthController{
 					$_SESSION['auth'] = 'ON';
 					$_SESSION['session_user'] = $user->name;
 					$_SESSION['session_user_id'] = $user->_id;
-					Redirect::to('post/list');					
+					Redirect::to('post/index');
 				}else{
 					$error = 'Usuário e/ou senha não existentes';	
 				}
@@ -31,7 +36,7 @@ class AuthController{
 		}
 
 		echo Render::viewWithLayout('/auth/login',[
-			'error'=>$error;
+			'error' => $error
 		]);
 	}	
 

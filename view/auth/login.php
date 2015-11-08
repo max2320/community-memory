@@ -1,4 +1,9 @@
 <form method="post">
+	<?php if(!empty($error)){ ?>
+    <div class="alert alert-warning">
+      <?php echo $error; ?>
+    </div>
+  <?php } ?>
 	<div>
 		<label>Usuario:</label>
 		<input type="text" name="user[email]" class="form-control" required='true'>

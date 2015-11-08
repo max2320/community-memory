@@ -23,7 +23,6 @@ class Database {
 		return $this->pdo->query($sql);	
 	}
 
-
 	public function insert($table, $fields, $datas){
 		return $this->run("INSERT INTO {$table} (". implode(',',$fields).") VALUES ('". implode("','",$datas)."');");
 	}
