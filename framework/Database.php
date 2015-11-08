@@ -15,8 +15,8 @@ class Database {
 		$this->pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));	
 	}
 
-	private function run(){
-		return $this->pdo->exec();
+	private function run($sql){
+		return $this->pdo->exec($sql);
 	}
 	
 	public function query($sql){
@@ -25,10 +25,7 @@ class Database {
 
 
 	public function insert($table, $fields, $datas){
-		echo "INSERT INTO {$table} (". implode(',',$fields).") VALUES ('". implode("','",$datas)."');";
-		$this->prepare("INSERT INTO {$table} (". implode(',',$fields).") VALUES ('". implode("','",$datas)."');");
-
-		return $this->run();
+		return $this->run("INSERT INTO {$table} (". implode(',',$fields).") VALUES ('". implode("','",$datas)."');");
 	}
 
 	public function update($table, $fields, $datas, $where){
@@ -40,15 +37,11 @@ class Database {
 
 		$updateQuery = implode(',',$updateQuery);
 		
-		$this->prepare("UPDATE {$table} SET {$updateQuery} WHERE $where");
-
-		return $this->run();
+		return $this->run("UPDATE {$table} SET {$updateQuery} WHERE $where");
 	}
 
 	public function delete($table, $id){
-		$this->prepare("DELETE FROM {$table} WHERE id = {$id}");
-		
-		return $this->run();
+		return $this->run("DELETE FROM {$table} WHERE id = {$id}");
 	}
 
 	public function select($table, $where = "", $fields = "*"){

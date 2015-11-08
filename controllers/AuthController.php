@@ -18,23 +18,34 @@ class AuthController{
 	}
 
 	public function postRegister($get, $post){
+		$passwordToken = date('U');
+		$passwordTokenEnc = sha1($passwordToken);
+
 		$post['user']['birth_date'] = Date::formatToStore($post['user']['birth_date'], false);
-		$post['user']['password'] = date('U');
+		$post['user']['password'] = $passwordTokenEnc;
 		$post['user']['status'] = 0;
+		$post['user']['token'] = $passwordToken;
 		
-		
+		//build user
 		$newUser = new User($post['user']);
 		
-		var_dump($newUser->save());
+		if($newUser->save()){
+			// build registration mail
+			$mailer = new Mailer('user_register', $newUser, $newUser->email, 'Resgistro de Usuário');
+			// send mail
+			if($mailer->deliver()){
+				echo Render::viewWithLayout('/auth/registerMailDelivered',[
+					'user' => $newUser,
+				]);
+			}
+		}
 
-		echo Render::viewWithLayout('/auth/register',[
-			'user' => $newUser,
+		echo Render::viewWithLayout('auth/register', [
+			'user' => $user
 		]);
-
-		// Redirect::to('auth/registerStep1');
-
 	}
-	public function registerStep1(){
+	public function registerFinishRegister(){
+
 		echo Render::viewWithLayout();
 	}
 

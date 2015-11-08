@@ -71,7 +71,6 @@ class Model{
   }
 
   private function newRegister($datas){
-    var_dump($this->tableName(), array_keys($datas), $datas);
     return $this->_db->insert($this->tableName(), array_keys($datas), $datas);
   }
 
