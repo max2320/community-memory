@@ -1,18 +1,29 @@
 <?php
-class Post{
+class Post extends Model{
 
-  public $model;
-
-  public function __construct(){
-    $this->model = new Model($this->tableName(), $this->fields());
-  }
+  public $token;
+  
   public function tableName(){
     return 'post';
-  }
-  private function fields(){
-    return ['content', 'image', 'likes'];
-  }
+  } 
+  
+  public function columns(){ 
+    return [
+      'id',
+      'content', 
+      'image', 
+      'likes', 
+    ];
+  } 
 
+  public function validators(){ 
+    return [
+      'birth_date'=>'date', 
+      'email'=>'email', 
+      'status'=>'integer'
+    ];
+  }
+  
   public static function createTable(){
     return "CREATE TABLE IF NOT EXISTS post(
       id INTEGER NOT NULL AUTO_INCREMENT,
@@ -22,11 +33,8 @@ class Post{
       PRIMARY KEY(id)
     );";
   }
-
-  public function create($data){
-    $this->model->newRegister($data);
-  }
 }
 
 
 ?>
+
