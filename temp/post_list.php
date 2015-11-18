@@ -24,7 +24,6 @@
 				}
 
 				.image{
-					width: 100px;
 					margin: 0 auto;
 					text-align: center;
 				}
@@ -32,24 +31,27 @@
 				label{
 					display: block;
 				}
+
+				.logo{
+					width: 50%;
+				}
 			</style>
 	</head>
 
 	<body>
 
 		<div class="content-center">
-			Logo
+			<img src="fotos/logo.png" alt="imagem" class="logo">
 			<div class="content-post-list">
 				<form method="post-list">
 					<div class="row">
 	 					<div class="image">
 	 					  <div class="thumbnail">
-	     					<img src="..." alt="...">
+	     					<img src="fotos/foto1.jpg" alt="imagem">
 	     					<div class="caption">
-	        				<h3>Imagem</h3>
-	       					<p>...</p>
-	       					<p><a href="#" class="btn btn-primary" role="button">Curtir</a>
-	       					<p><a href="#" class="btn btn-default" role="button">Comentar</a></p>
+	        				<p>Sonho Meu ...</p>
+	       					<p><a href="#" class="btn btn-primary" role="button">Curtir</a> &nbsp;
+	       					<a href="#" class="btn btn-default" role="button">Comentar</a></p>
 	      				</div>
 	    				</div>
 	  				</div>

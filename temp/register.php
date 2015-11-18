@@ -69,7 +69,8 @@
 					<br clear="both"/>
 					<div>
 						<label>Sexo:</label>
-						<input type="radio" name="sex" value="male">Masculino &nbsp;
+						<input type="
+						radio" name="sex" value="male">Masculino &nbsp;
 						<input type="radio" name="sex" value="female">Feminino
 					</div>
 					<br clear="both"/>
