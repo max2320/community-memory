@@ -5,6 +5,7 @@
 	<body>
 		<?= Render::view('layouts/header'); ?>
 		<div class="content-center">
+			<br />
 			<?= $content; ?>
 		</div>
 		<?= Render::view('layouts/footer'); ?>

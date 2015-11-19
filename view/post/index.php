@@ -14,8 +14,8 @@ echo Render::view('post/form');
 //  					<img src="<?= $image; ?>" alt="...">
 //  					<div class="caption">
 //    					<p><?= $content; ?> </p>
-//    					<p><a href="#" class="btn btn-primary" role="button"> Curtir <span class="badge"><?= $likes; ?></span></a> &nbsp;
-//    					<a href="#" class="btn btn-default" role="button">Comentar</a></p>
+//    					<p><a href="#" class="btn btn-primary active" role="button"> Curtir <span class="badge"><?= $likes; ?></span></a> &nbsp;
+//    					<a href="#" class="btn btn-default active" role="button">Comentar</a></p>
 //   				</div>
 // 				</div>
 // 			</div>
