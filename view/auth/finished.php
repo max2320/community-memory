@@ -1,6 +1,6 @@
 <div class="alert alert-success">
-  Cadastro finalizado.
+  Cadastro finalizado com sucesso.
 </div>
 <a href="/auth/login/" class="btn btn-success">
-  Voltar ao Login
+  Clique aqui e faça o Login
 </a>
