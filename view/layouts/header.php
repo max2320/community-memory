@@ -5,9 +5,12 @@
 				<img src=""/>
 			</div>	
 			<?php if(isset($_SESSION['auth']) && $_SESSION['auth'] == "ON" ){ ?>
+				
 				<div class="opcoes">
+					<a href="/profile/show">Profile</a>
 					<a href="/auth/logout">Sair</a>
 				</div>	
+
 			<?php } ?>
 		</div>
 	</div>
