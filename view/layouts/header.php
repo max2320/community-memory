@@ -2,7 +2,7 @@
 	<div class="header">
 		<div class="content-center">
 			<div class="logo">
-				<img src="images/logo1.png" />
+				<img class="logo" src="../../img/logo.png" />
 			</div>	
 			<?php if(isset($_SESSION['auth']) && $_SESSION['auth'] == "ON" ){ ?>
 				

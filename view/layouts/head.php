@@ -27,7 +27,8 @@
 		padding: 10px 5px 15px 20px; 
 	}
 	.logo{
-		text-align: left;
+		text-align: center;
+    width: 150px;
 	}
 	.opcoes{
 		text-align: right;
@@ -45,7 +46,7 @@
 	.header {
     background-color: #02014C; 
     width: : 100%;
-    height: 80px;
+    height: 100px;
 	}
 	
 	footer {
