@@ -26,7 +26,8 @@
 		padding: 10px 5px 15px 20px; 
 	}
 	.logo{
-		text-align: left;
+		text-align: center;
+    width: 150px;
 	}
 	.opcoes{
 		text-align: right;
@@ -59,6 +60,5 @@
 	a.link_laranja:link, a.link_laranja:visited, a.link_laranja:hover, a.link_laranja:active {
 		color: #FFA600;
 	}
-
 
 </style>
