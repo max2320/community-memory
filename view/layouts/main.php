@@ -7,6 +7,7 @@
 		<div class="content-center">
 			<?= $content; ?>
 		</div>
+		<br clear="both">
 		<?= Render::view('layouts/footer'); ?>
 	</body>
 </html>

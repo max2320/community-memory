@@ -21,7 +21,7 @@ class Model{
     return $this->exist;
   }
 
-  private function prepareWhere($array){
+  public function prepareWhere($array){
     $where = [];
     
     foreach($array as $column => $value){

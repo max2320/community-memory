@@ -1,5 +1,3 @@
-
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
@@ -12,6 +10,7 @@
 		width: 600px;
 		margin: 0 auto;
 		text-align: center;
+		display: block;
 	}
 	.content-login{
 		width: 300px;
@@ -44,18 +43,18 @@
 	}
 	
 	.header {
-    background-color: #9EACFC;
+    background-color: #02014C; 
     width: : 100%;
     height: 80px;
 	}
 	
-	.footer {
-	  position: absolute;
-	  bottom: 0;
-	  width: 100%;
-	  height: 80px;
-	  background-color: #9EACFC;
+	footer {
+	  background-color: #02014C;
+	  color: #ffffff;
 	}
 
+	a.link_laranja:link, a.link_laranja:visited, a.link_laranja:hover, a.link_laranja:active {
+		color: #FFA600;
+	}
 
 </style>

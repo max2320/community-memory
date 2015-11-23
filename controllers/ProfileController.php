@@ -8,6 +8,11 @@ class ProfileController{
 		$profile = new Profile();
 		$profile->find($_SESSION['session_user_id']);
 
+		$f = ResultSet::find('User',[
+			'email'=>'anderson2320@gmail.com',
+		]);
+		print_r($f);
+
 
 		echo Render::viewWithLayout('profile/show',[
 			'profile' => $profile

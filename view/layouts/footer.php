@@ -1,7 +1,5 @@
 <footer>
-	<div class="footer">
-		<div class="content-center">	
-				&copy; Copyright
-		</div>
-	</div>
+	<center>	
+		&copy; Community Memory - 2015
+	</center>
 </footer>

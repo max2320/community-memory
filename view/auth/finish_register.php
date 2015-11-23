@@ -1,5 +1,5 @@
 <div>
-  <p>Ola <strong><?php echo $user->name; ?></strong></p>
+  <p>Olá <strong><?php echo $user->name; ?></strong></p>
   <p> Para finalizar seu cadastro precisamos deu defina sua senha e coloque sua foto de perfil</p>
   <?php if(!empty($error)){ ?>
     <div class="alert alert-warning">
@@ -12,16 +12,19 @@
       <label>Senha</label>
       <input type="password" name="user[password]" id="user_password"/>
     </div>
+    <br />    
     <div>
       <label>Confirmação da Senha</label>
-      <input type="password" name="user[confirm_password]" id="user_password"/>
+      <input type="password" name="user[confirm_password]" id="user_password" />
     </div>
+    <br />
     <div>
       <label>Foto do perfil</label>
-      <input type='file' name="profile[photo]" id="profile_photo">
+      <input type='file' name="profile[photo]" id="profile_photo" style="padding-left: 109px;">
     </div>
+    <br />
     <div>
-      <button class="btn btn-primary">Confirmar</button>
+      <button class="btn btn-info active">Confirmar</button>
     </div>
   </form>
 </div>

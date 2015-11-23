@@ -1,5 +1,8 @@
 <form action="/auth/register" method="post">
   <div class="form-group">
+
+    <br />
+
     <label>Nome</label>
     
     <input type='text' name="user[name]" id="name" value="<?php echo $user->attr('name'); ?>" placeholder="Nome" required="required" class="form-control"/>
@@ -17,7 +20,9 @@
     <input type='email' name="user[email]" id="email" value="<?php echo $user->attr('email'); ?>" placeholder="E-mail" required="required" class="form-control"/>
   </div>
 
+  <br />
+
   <div class="form-group">
-    <button class="btn btn-primary">Prosseguir</button>
+    <button class="btn btn-info active">Prosseguir</button>
   </div>
 </form>

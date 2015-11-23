@@ -49,7 +49,7 @@
 	 					  <div class="thumbnail">
 	     					<img src="fotos/foto1.jpg" alt="imagem">
 	     					<div class="caption">
-	        				<p>Sonho Meu ...</p>
+	        				<p>Sonho Meu ...Sonho Meu ...Sonho Meu ...Sonho Meu ...</p>
 	       					<p><a href="#" class="btn btn-primary" role="button">Curtir</a> &nbsp;
 	       					<a href="#" class="btn btn-default" role="button">Comentar</a></p>
 	      				</div>
