@@ -45,7 +45,7 @@
 	.header {
     background-color: #02014C; 
     width: : 100%;
-    height: 80px;
+    height: 100px;
 	}
 	
 	.footer {
