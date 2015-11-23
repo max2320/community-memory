@@ -54,7 +54,6 @@ class ResultSet{
 
     $this->rs = [];
 
-    var_dump($this->tableName(), $this->prepareWhere($query),'id', $query);
     $this->rsDB = $this->_db->select($this->tableName(), $this->prepareWhere($query),'id');
     
     $this->parseToModels();
