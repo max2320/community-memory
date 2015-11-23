@@ -44,8 +44,8 @@ class Database {
 		return $this->run("DELETE FROM {$table} WHERE id = {$id}");
 	}
 
-	public function select($table, $where = "", $fields = "*"){
-		$rs = $this->query("SELECT {$fields} FROM {$table} WHERE {$where}");
+	public function select($table, $where = "", $fields = "*", $ordination = 'id'){
+		$rs = $this->query("SELECT {$fields} FROM {$table} WHERE {$where} ORDER BY {$ordination}");
 		return $rs;
 	}
 

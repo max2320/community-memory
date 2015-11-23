@@ -7,7 +7,7 @@ class Uninstall{
     $this->db = new Database();
     foreach($classCatalog as $class){
     	$table = new $class;
-      $this->db->executeSql("DROP TABLE {$table->tableName()} CASCADE");
+      $this->db->query("DROP TABLE {$table->tableName()} CASCADE");
     }
   }
 }

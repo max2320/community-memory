@@ -10,6 +10,7 @@
 		width: 600px;
 		margin: 0 auto;
 		text-align: center;
+		display: block;
 	}
 	.content-login{
 		width: 300px;
@@ -48,11 +49,7 @@
     height: 100px;
 	}
 	
-	.footer {
-	  position: absolute;
-	  bottom: 0;
-	  width: 100%;
-	  height: 80px;
+	footer {
 	  background-color: #02014C;
 	  color: #ffffff;
 	}

@@ -1,8 +1,6 @@
 <?php
 class Post extends Model{
 
-  public $token;
-  
   public function tableName(){
     return 'post';
   } 
@@ -13,6 +11,7 @@ class Post extends Model{
       'content', 
       'image', 
       'likes', 
+      'user_id',
     ];
   } 
 
@@ -27,9 +26,11 @@ class Post extends Model{
   public static function createTable(){
     return "CREATE TABLE IF NOT EXISTS post(
       id INTEGER NOT NULL AUTO_INCREMENT,
-      content TEXT NOT NULL,
-      image VARCHAR(255) NOT NULL,
-      likes INTEGER NOT NULL,
+      user_id INTEGER NOT NULL REFERENCES users(id),
+      content TEXT,
+      image VARCHAR(255),
+      likes INTEGER NOT NULL DEFAULT 0,
+      date_time DATETIME NOT NULL,
       PRIMARY KEY(id)
     );";
   }

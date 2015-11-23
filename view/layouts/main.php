@@ -5,9 +5,9 @@
 	<body>
 		<?= Render::view('layouts/header'); ?>
 		<div class="content-center">
-			<br />
 			<?= $content; ?>
 		</div>
+		<br clear="both">
 		<?= Render::view('layouts/footer'); ?>
 	</body>
 </html>
