@@ -8,7 +8,7 @@
 		<input name="post[image]" type="file" />
 	</div>
 	<br clear="both"/>
-	<div class="botao">
+	<div>
 		<button class="btn btn-primary active">Enviar</button>
 	</div>
 	<hr>

@@ -5,14 +5,15 @@
 				<img class="logo" src="../../img/logo.png" />
 			</div>	
 			<?php if(isset($_SESSION['auth']) && $_SESSION['auth'] == "ON" ){ ?>
-				
 				<div class="opcoes">
-					<a href="/profile/show">Profile</a>
-					<a href="/auth/logout">Sair</a>
-					<a class="link_laranja" href="/auth/perfil">Editar Perfil</a>
-					&nbsp;
-					&nbsp;
-					<a class="link_laranja" href="/auth/logout">Sair</a>
+					<ul class="no-list inline">
+						<li>
+							<a class="link_laranja"href="/profile/show">Profile</a>
+						</li>
+						<li>
+							<a class="link_laranja" href="/auth/logout">Sair</a>
+						</li>
+					</ul>
 				</div>	
 
 			<?php } ?>

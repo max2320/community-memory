@@ -43,5 +43,27 @@ class PostController{
     echo 'error';
     die('asdf');
   }
+ 
+  public function like($get){
+    if(isset($get['post_id'])){
+
+      $post = new Post();
+      $post->find($get['post_id']);
+
+      if($post->like($_SESSION['session_user_id'])){
+      }
+    }
+    Redirect::to('post/index');
+  }
+ 
+  public function dislike($get){
+    if(isset($get['post_id'])){
+      $post = new Post();
+      $post->find($get['post_id']);
+      if($post->dislike($_SESSION['session_user_id'])){
+      }
+        Redirect::to('post/index');
+    }
+  }
 }
 ?>

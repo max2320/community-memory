@@ -17,18 +17,10 @@
 		margin: 0 auto;
 		text-align: center;	
 	}
-	.header{
-		background-color: #9EACFC;
-		padding: 10px 5px 15px 20px; 
-	}
-	.footer{
-		background-color: #9EACFC;
-		font-weight: bold;
-		padding: 10px 5px 15px 20px; 
-	}
 	.logo{
 		text-align: center;
-    width: 150px;
+    max-height: 85px;
+		padding: 5px;
 	}
 	.opcoes{
 		text-align: right;
@@ -43,10 +35,11 @@
 		display: block;
 	}
 	
-	.header {
+	header {
     background-color: #02014C; 
     width: : 100%;
     height: 100px;
+    margin-bottom: 20px;
 	}
 	
 	footer {
@@ -58,4 +51,15 @@
 		color: #FFA600;
 	}
 
+
+	.no-list {
+		list-style: none;
+		padding: 0;
+	}
+
+	.no-list.inline > li{
+		display: inline;
+		float: left;
+		margin: 10px 20px;
+	}
 </style>

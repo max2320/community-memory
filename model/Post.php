@@ -34,7 +34,47 @@ class Post extends Model{
       PRIMARY KEY(id)
     );";
   }
+
+  public function likeCount(){
+    return count(ResultSet::find('PostLikes',[
+      'post_id'=> $this->_id,
+    ]));
+  }
+
+  public function userLike($user_id){
+    $like = new PostLikes();
+    $like->findByAttr([
+      'post_id'=> $this->_id,
+      'user_id'=>$user_id,
+    ]);
+    if($like->exists()){
+      return $like;
+    }
+    return false;
+  }
+
+  public function like($user_id){
+    $like = $this->userLike($user_id);
+    if(!$like){
+      $like = new PostLikes([
+        'post_id'=> $this->_id,
+        'user_id'=>$user_id,
+        'date_time' => date('Y-m-d H:i:s'),
+        'liked' => 1,
+      ]);
+      return $like->save();
+    }
+    return false;
+  }
+  public function dislike($user_id){
+    $like = $this->userLike($user_id);
+    if($like){
+      return $like->delete();
+    }
+    return false;
+  }
 }
+
 
 
 ?>
