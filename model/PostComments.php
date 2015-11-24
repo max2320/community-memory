@@ -1,16 +1,16 @@
 <?php
-class CommentLikes extends Model{
+class PostComments extends Model{
 
   public function tableName(){
-    return 'comment_likes';
+    return 'post_comments';
   } 
   
   public function columns(){ 
     return [
       'id',
       'user_id',
-      'comment_id',
-      'liked',
+      'post_id',
+      'content',
       'date_time',
     ];
   } 
@@ -20,11 +20,11 @@ class CommentLikes extends Model{
   }
   
   public static function createTable(){
-    return "CREATE TABLE IF NOT EXISTS comment_likes(
+    return "CREATE TABLE IF NOT EXISTS post_comments(
       id INTEGER NOT NULL AUTO_INCREMENT,
       user_id INTEGER NOT NULL REFERENCES users(id),
-      comment_id INTEGER NOT NULL REFERENCES comment(id),
-      liked INTEGER NOT NULL DEFAULT 0,
+      post_id INTEGER NOT NULL REFERENCES post(id),
+      content TEXT NOT NULL,
       date_time DATETIME NOT NULL,
       PRIMARY KEY(id)
     );";

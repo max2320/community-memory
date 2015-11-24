@@ -28,7 +28,18 @@ foreach ($posts as $post) {
                 <?php
               }
               ?>
-     					<a href="#" class="btn btn-default" role="button">Comentar</a>
+
+              <button type="button" class="btn btn-default" aria-expanded="false" aria-controls="#comments_post_<?php echo $post->_id?>" data-toggle="collapse" href="#comments_post_<?php echo $post->_id?>">
+                Comentários
+                <span class="badge"><?php echo $post->commentCount(); ?></span>
+              </button>
+
+              <div class="collapse" id="comments_post_<?php echo $post->_id?>">
+                <?php echo Render::view('comment/index', [
+                  'post' => $post,
+
+                ]); ?>
+              </div>
             </div>
   				</div>
 				</div>

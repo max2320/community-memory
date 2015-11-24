@@ -11,6 +11,8 @@ class Comment extends Model{
       'content',  
       'likes', 
       'user_id',
+      'post_id',
+      'date_time',
     ];
   } 
 
@@ -25,6 +27,7 @@ class Comment extends Model{
   public static function createTable(){
     return "CREATE TABLE IF NOT EXISTS comment(
       id INTEGER NOT NULL AUTO_INCREMENT,
+      post_id INTEGER NOT NULL REFERENCES posts(id),
       user_id INTEGER NOT NULL REFERENCES users(id),
       content TEXT,
       likes INTEGER NOT NULL DEFAULT 0,
@@ -33,6 +36,8 @@ class Comment extends Model{
     );";
   }
 
+
+
   public function likeCount(){
     return count(ResultSet::find('CommentLikes',[
       'comment_id'=> $this->_id,
@@ -40,7 +45,7 @@ class Comment extends Model{
   }
 
   public function userLike($user_id){
-    $like = new PostLikes();
+    $like = new CommentLikes();
     $like->findByAttr([
       'comment_id'=> $this->_id,
       'user_id'=>$user_id,
@@ -54,7 +59,7 @@ class Comment extends Model{
   public function like($user_id){
     $like = $this->userLike($user_id);
     if(!$like){
-      $like = new PostLikes([
+      $like = new CommentLikes([
         'comment_id'=> $this->_id,
         'user_id'=>$user_id,
         'date_time' => date('Y-m-d H:i:s'),

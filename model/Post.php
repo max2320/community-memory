@@ -12,6 +12,7 @@ class Post extends Model{
       'image', 
       'likes', 
       'user_id',
+      'date_time',
     ];
   } 
 
@@ -35,10 +36,25 @@ class Post extends Model{
     );";
   }
 
-  public function likeCount(){
-    return count(ResultSet::find('PostLikes',[
+  public function likes(){
+    return ResultSet::find('PostLikes',[
       'post_id'=> $this->_id,
-    ]));
+    ]);
+  }
+
+
+  public function likeCount(){
+    return count($this->likes());
+  }
+  
+  public function comments(){
+    return ResultSet::find('Comment',[
+      'post_id'=> $this->_id,
+    ]);
+  }
+
+  public function commentCount(){
+    return count($this->comments());
   }
 
   public function userLike($user_id){
