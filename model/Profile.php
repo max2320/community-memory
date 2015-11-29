@@ -1,8 +1,5 @@
 <?php
 class Profile extends Model{
-
-  public $token;
-  
   public function tableName(){
     return 'profile';
   } 
@@ -31,6 +28,53 @@ class Profile extends Model{
       photo TEXT NOT NULL,
       PRIMARY KEY(id)
     );";
+  }
+
+  public function user(){
+    $user = new User();
+    $user->find($this->user_id);
+    return $user;
+  }
+
+  public function getUserName(){
+    return $this->user()->attr('name');
+  }
+
+  public function getUserBirthDate(){
+    return Date::formatToShow($this->user()->attr('birth_date'));
+  }
+
+  public function friends(){
+    return ResultSet::find('Friend',[
+      'user_id'=>$this->user_id,
+    ]);
+  }
+
+  public function owner(){
+    return ResultSet::find('Owner',[
+      'carrier_id'=>$this->user_id,
+    ]);
+  }
+ 
+  public function carriers(){
+    return ResultSet::find('Owner',[
+      'owner_id'=>$this->user_id,
+    ]);
+  }
+ 
+  public function posts(){
+    return ResultSet::find('Post',[
+      'user_id'=>$this->user_id,
+    ]);  
+  }
+
+  public function canFriend($friend_id){
+    $friend = new Friend();
+    $friend->findByAttr([
+      'user_id' => $this->user_id,
+      'friend_id' => $friend_id
+    ]);
+    return $friend->exists();
   }
 }
 

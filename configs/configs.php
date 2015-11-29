@@ -15,7 +15,7 @@ return [
 	# SMTP SETTINGS // Conecta ao servidor, e envia o email para continuar preencher o perfil.
 		'smtp_host' => empty(getenv("SMTP_HOST")) ? 'smtp.domain.com' : getenv("SMTP_HOST"),
 		'smtp_username' => empty(getenv("SMTP_USERNAME")) ? 'teste@maxfs.com' : getenv("SMTP_USERNAME"),
-		'smtp_password' => empty(getenv("SMTP_PASSWORD")) ? '' : getenv("SMTP_PASSWORD"),
+		'smtp_password' => empty(getenv("SMTP_PASSWORD")) ? 'Larissa1234' : getenv("SMTP_PASSWORD"),
 		'smtp_port' => empty(getenv("SMTP_PORT")) ? 465 : getenv("SMTP_PORT"),
 		'smtp_security' => empty(getenv("SMTP_SECURITY")) ? 'ssl' : getenv("SMTP_SECURITY"), // tsl or ssl
 		'smtp_from_name' => empty(getenv("SMTP_FROM_NAME")) ? 'Community Memory' : getenv("SMTP_FROM_NAME"),
