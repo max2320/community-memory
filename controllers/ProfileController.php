@@ -32,8 +32,6 @@ class ProfileController{
 	public function unfriend($get){
 		
 	}	
-	
-
 
 }
 ?>

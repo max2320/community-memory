@@ -6,7 +6,6 @@ class Friend extends Model{
   
   public function columns(){ 
     return [
-      'name',
       'user_id', 
       'friend_id',
       'date_time',

@@ -17,6 +17,9 @@
 					<div class="col-sm-1 logout-btn">
 					</div>
 					<div class="col-sm-1 logout-btn">
+						<a class="link_laranja" href="/view/forum"><i class="fa fa-server"></i></a>
+					</div>
+					<div class="col-sm-1 logout-btn">
 						<a class="link_laranja"href="/profile/show"><i class="fa fa-user"></i></a>
 					</div>
 					<div class="col-sm-1 logout-btn">

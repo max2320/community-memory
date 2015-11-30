@@ -1,7 +1,7 @@
 <?php
 return [
 	# DATABASE
-		'db_dsn' => empty(getenv("DB_DSN")) ? "mysql:dbname=community_memory;host=localhost;port=3306" : getenv("DB_DSN"),
+		'db_dsn' => empty(getenv("DB_DSN")) ? "mysql:dbname=kk;host=localhost;port=3306" : getenv("DB_DSN"),
 		'db_user' => empty(getenv("DB_USER")) ? "root" : getenv("DB_USER"),
 		'db_password' => empty(getenv("DB_PASSWORD")) ? "" : getenv("DB_PASSWORD"),
 	# END DATABASE

@@ -25,7 +25,7 @@ class Comment extends Model{
   }
   
   public static function createTable(){
-    return "CREATE TABLE IF NOT EXISTS comment(
+    return "CREATE TABLE comment(
       id INTEGER NOT NULL AUTO_INCREMENT,
       post_id INTEGER NOT NULL REFERENCES posts(id),
       user_id INTEGER NOT NULL REFERENCES users(id),
