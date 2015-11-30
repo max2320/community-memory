@@ -122,7 +122,7 @@ class AuthController{
 						$profile = new Profile([
 							'name' => $user->name,
 							'photo' => $file->getFileName(),
-							'user_id' => $user->id,
+							'user_id' => $user->_id,
 						]);
 						
 						$user->password = sha1($post['user']['password']);
